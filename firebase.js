@@ -1,6 +1,10 @@
 const admin = require("firebase-admin");
 
-// Parse the service account key JSON from the environment variable
+if (!process.env.SERVICE_ACCOUNT_KEY) {
+  throw new Error("SERVICE_ACCOUNT_KEY environment variable is not set.");
+}
+
+// Parse the service account key from the environment variable
 const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT_KEY);
 
 admin.initializeApp({

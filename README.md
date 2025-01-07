@@ -1,6 +1,6 @@
 ![Logo](https://res.cloudinary.com/docg651du/image/upload/v1736257764/framework_b9spu5.png)
 
-# Backend API for Interactions with Qude AI Agents
+# Local machine API for Interactions with Qude AI Agents
 
 This is an open-source backend API designed to manage and interact with Qude AI agents. The API facilitates retrieving agent details and interacting with agents via Qude-Framework model. This guide provides instructions for setting up the API locally, along with examples and usage instructions.
 

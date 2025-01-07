@@ -1,4 +1,4 @@
-![Logo](https://res.cloudinary.com/docg651du/image/upload/v1736257764/framework_b9spu5.png)
+![Logo](https://res.cloudinary.com/docg651du/image/upload/v1736280044/framework_api_tqsocz.png)
 # Qude Framework API for Interacting with AI Agents on local machine and api.qude.ai
 
 Welcome to the **Qude Framework API**, a backend service enabling seamless interaction with AI agents created using the **Qude Framework**. This API provides an interface to fetch agent metadata and interact with their AI capabilities, leveraging OpenAI's GPT models.

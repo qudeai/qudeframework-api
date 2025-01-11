@@ -3,7 +3,8 @@ name: Publish to npm
 on:
   push:
     branches:
-      - main  
+      - main
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -15,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '23.6.0'  
+        node-version: '20' 
         registry-url: 'https://registry.npmjs.org/'
 
     - name: Install dependencies

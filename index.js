@@ -1,18 +1,21 @@
 const express = require("express");
 const cors = require("cors");
-const db = require("./firebase"); 
+const db = require("./firebase"); // Ensure this path is correct
 const { OpenAI } = require("openai");
 require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Initialize OpenAI API
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // Ensure JSON payloads are parsed
+
+// Debugging middleware to log incoming requests
 app.use((req, res, next) => {
   console.log(`[${new Date().toISOString()}] ${req.method} ${req.path}`);
   console.log("Headers:", req.headers);
@@ -20,6 +23,8 @@ app.use((req, res, next) => {
   console.log("Query:", req.query);
   next();
 });
+
+// API Endpoint to fetch agent details
 app.get("/api/agent/:name", async (req, res) => {
   const { name } = req.params;
 
@@ -39,6 +44,7 @@ app.get("/api/agent/:name", async (req, res) => {
   }
 });
 
+// API Endpoint to interact with the agent using POST
 app.post("/api/agent/:name/interact", async (req, res) => {
   const { name } = req.params;
   const { message } = req.body;
@@ -62,7 +68,9 @@ app.post("/api/agent/:name/interact", async (req, res) => {
       messages: [
         {
           role: "system",
-          content: `You are ${name}, a helpful AI agent. ${agentDetails.description || ""}`,
+          content: `You are ${name}, a helpful AI agent with the following personality: ${
+            agentDetails.personality || "neutral and general."
+          } ${agentDetails.description || ""}`,
         },
         { role: "user", content: message },
       ],
@@ -79,6 +87,8 @@ app.post("/api/agent/:name/interact", async (req, res) => {
   }
 });
 
+// Start the server
 app.listen(PORT, () => {
   console.log(`API server running on http://localhost:${PORT}`);
 });
+
